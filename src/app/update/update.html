@@ -1,1 +1,61 @@
-<p>update works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-3 border rounded" style="max-width: 600px; margin: auto;">
+  <h3 class="mb-3">Cập nhật sự kiện</h3>
+
+  <div class="mb-3">
+    <label class="form-label">Tên sự kiện</label>
+    <input type="text" class="form-control" formControlName="name" />
+    <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched" class="text-danger">
+      Tên sự kiện phải ít nhất 5 ký tự
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Trạng thái</label><br />
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" formControlName="type" value="upcoming" id="upcoming" />
+      <label class="form-check-label" for="upcoming">Sắp diễn ra</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" formControlName="type" value="ongoing" id="ongoing" />
+      <label class="form-check-label" for="ongoing">Đang diễn ra</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" formControlName="type" value="ended" id="ended" />
+      <label class="form-check-label" for="ended">Đã kết thúc</label>
+    </div>
+    <div *ngIf="form.get('type')?.invalid && form.get('type')?.touched" class="text-danger">
+      Vui lòng chọn trạng thái
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Mô tả</label>
+    <textarea class="form-control" rows="3" formControlName="note"></textarea>
+    <div *ngIf="form.get('note')?.invalid && form.get('note')?.touched" class="text-danger">
+      Mô tả không được để trống
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Ngày tổ chức</label>
+    <input type="date" class="form-control" formControlName="dateStart" />
+    <div *ngIf="form.get('dateStart')?.invalid && form.get('dateStart')?.touched" class="text-danger">
+      Vui lòng chọn ngày tổ chức
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Loại sự kiện</label>
+    <select class="form-select" formControlName="category">
+      <option value="">--Chọn loại--</option>
+      <option value="workshop">Workshop</option>
+      <option value="seminar">Seminar</option>
+      <option value="movie">Movie</option>
+    </select>
+    <div *ngIf="form.get('category')?.invalid && form.get('category')?.touched" class="text-danger">
+      Vui lòng chọn loại sự kiện
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Cập nhật sự kiện</button>
+</form>

@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common'; 
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Service } from '../service';
 
 @Component({
   selector: 'app-update',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './update.html',
-  styleUrl: './update.scss'
+  styleUrls: ['./update.scss']
 })
 export class Update {
-
+  
 }

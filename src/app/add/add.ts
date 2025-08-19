@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common'; 
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators,
+   ReactiveFormsModule } from '@angular/forms';
+import { Service } from '../service';
+
 @Component({
   selector: 'app-add',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './add.html',
-  styleUrl: './add.scss',
+  styleUrls: ['./add.scss']
 })
 export class Add {
-
+  
 }

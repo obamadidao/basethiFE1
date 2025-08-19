@@ -1,0 +1,59 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-4 border rounded shadow-sm bg-light" style="max-width:600px; margin:auto;">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name:</label>
+    <input id="name" type="text" formControlName="name" class="form-control" [class.is-invalid]="form.get('name')?.invalid && form.get('name')?.touched" />
+    <div class="invalid-feedback">
+      Name phải ít nhất 5 ký tự và không được để trống.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label d-block">Type:</label>
+    <div class="form-check form-check-inline">
+      <input id="typeUpcoming" class="form-check-input" type="radio" formControlName="type" value="upcoming" />
+      <label for="typeUpcoming" class="form-check-label">Upcoming</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input id="typeOngoing" class="form-check-input" type="radio" formControlName="type" value="ongoing" />
+      <label for="typeOngoing" class="form-check-label">Ongoing</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input id="typeEnded" class="form-check-input" type="radio" formControlName="type" value="ended" />
+      <label for="typeEnded" class="form-check-label">Ended</label>
+    </div>
+    <div *ngIf="form.get('type')?.invalid && form.get('type')?.touched" class="text-danger mt-1" style="font-size: 0.875em;">
+      Vui lòng chọn loại sự kiện.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="note" class="form-label">Note:</label>
+    <textarea id="note" formControlName="note" rows="3" class="form-control" [class.is-invalid]="form.get('note')?.invalid && form.get('note')?.touched"></textarea>
+    <div class="invalid-feedback">
+      Ghi chú không được để trống.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="dateStart" class="form-label">Date Start:</label>
+    <input id="dateStart" type="date" formControlName="dateStart" class="form-control" [class.is-invalid]="form.get('dateStart')?.invalid && form.get('dateStart')?.touched" />
+    <div class="invalid-feedback">
+      Vui lòng chọn ngày bắt đầu.
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <label for="category" class="form-label">Category:</label>
+    <select id="category" formControlName="category" class="form-select" [class.is-invalid]="form.get('category')?.invalid && form.get('category')?.touched">
+      <option value="">-- Chọn --</option>
+      <option value="workshop">Workshop</option>
+      <option value="seminar">Seminar</option>
+      <option value="movie">Movie</option>
+    </select>
+    <div class="invalid-feedback">
+      Vui lòng chọn loại sự kiện.
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary w-100">Thêm sự kiện</button>
+</form>

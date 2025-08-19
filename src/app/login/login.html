@@ -1,1 +1,21 @@
-<p>login works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-4 border rounded shadow-sm bg-light" style="max-width: 600px; margin:auto;">
+  <div class="mb-3">
+    <label for="email" class="form-label">Email:</label>
+    <input id="email" type="email" formControlName="email" class="form-control" 
+      [class.is-invalid]="form.get('email')?.invalid && form.get('email')?.touched" />
+    <div class="invalid-feedback">
+      Vui lòng nhập email hợp lệ.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Mật khẩu:</label>
+    <input id="password" type="password" formControlName="password" class="form-control" 
+      [class.is-invalid]="form.get('password')?.invalid && form.get('password')?.touched" />
+    <div class="invalid-feedback">
+      Vui lòng nhập mật khẩu.
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
+</form>
